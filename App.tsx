@@ -28,7 +28,7 @@ export default class App extends React.Component<{}, IState> {
   };
 
   addTask = (name: string): void => {
-    const newTasks: ITask[] = [ ...this.state.tasks, { name, key: Date.now().toString() } ];
+    const newTasks: ITask[] = [ ...this.state.tasks, { name, key: Date.now() } ];
     this.saveData(newTasks);
     this.setState({
       tasks: newTasks,
@@ -40,7 +40,7 @@ export default class App extends React.Component<{}, IState> {
     AsyncStorage.getItem(TASK).then( data => this.setState({ tasks: JSON.parse(data) || [] } ));
   };
 
-  removeTask = (id: string): void => {
+  removeTask = (id: number): void => {
     const tasks: ITask[] = this.state.tasks.filter( task => task.key !== id );
     this.saveData(tasks);
     this.setState({ tasks });

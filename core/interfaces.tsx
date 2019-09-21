@@ -5,5 +5,5 @@ export interface IState {
 
 export interface ITask {
   name: string;
-  key: string;
+  key: number;
 }
